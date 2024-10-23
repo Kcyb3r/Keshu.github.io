@@ -1,201 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kez.ai</title>
-    <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/474x/6b/95/6a/6b956ab87774217ae5f402fb2f633b60.jpg">
-    <link href="/kez.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        @media only screen and (max-width:600px){}
+        @media only screen and (min-width: 600px){}
+        @media only screen and (min-width : 768px){}
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+        .logo {
+            font-family: 'Pacifico', cursive;
+        }
+        .highlight {
+            color: #f5c518;
+        }
+
+        .klogo{
+            border-radius: 100%;
+            width: 90px;
+            
+            mix-blend-mode: lighten;
+            border-left: 50%;
+            
+        }
+        .mask{
+            mix-blend-mode: lighten;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .fa-github{
+            font-size:45px;
+            width: 55px;
+        }
+        .fa-telegram{
+            font-size:45px;
+            width: 55px;
+        }
+        .fa-instagram{
+            font-size:45px;
+            width: 55px;
+        }
+        .fa-whatsapp{
+            font-size:45px;
+            width: 55px;
+        }
     
-</head>
-<body>
-  <script src="/kez.js"></script>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="https://i.pinimg.com/736x/f1/d8/1a/f1d81a009c5fdc9bc229095e0395ebf3.jpg" alt="Logo" class="rounded-pill">
-          </a>
-          
-        </div>
-      </nav>
-      
-      <ul>
-        <div class="topnav">
-        <li><a class="active" href="/home/keshav/Desktop/Kez.html">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
-      
-      <div class="search-container">
-        <form action="/action_page.php">
-          <input type="text" value="" placeholder="Search.." name="search">
-          <button type="submit"><i class="fafa-search">submit</i></button>
-        </form>
-      
-      </ul>
-      </div>
-      <hr>
+            
 
-      <img src="https://i.pinimg.com/736x/07/bf/bf/07bfbf8175939518805129e84ca45490.jpg" class="hac" alt="img">
-
-    </script>
-      </body>
         
-            <style>
-              body{
-    background-color: rgb(255, 255, 255);
-    
-}
-
-
-.rounded-pill{
-    width: 240px;
-    height: 240px; 
-    overflow:visible;
-  margin-top: -4%;
-  margin-bottom: -6%
-    
-}
-
-
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color:white;
-    position: relative;
-    
-}
-
-li{
-    float:left;
-    
-}
-
-li a{
-    display: block;
-    color:rgb(0, 0, 0);
-    padding-bottom: 100%;
-    padding:14px 16px;
-    text-decoration:none;
-    position:relative;
-    float:right;
-    
-
-}
-
-li a:hover {
-    color: rgb(56, 185, 207);
-    text-decoration-line: underline;
-    
-}
-
-
-.hac{
-  padding-top: 7%;
-    position: relative;
-    border-top-left-radius: 9%;
-    border-bottom-left-radius: 32%;
-    border-top-right-radius: 22%; 
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 902px;
-    height: 700px;
-    
-    border-bottom-right-radius: 3%;
-   
-}
-
-
-.fixed-content {
-    min-height:100%;
-    position:fixed;
-    overflow-y:scroll;
-    overflow-x:hidden;
-} 
-
-
-* {box-sizing: border-box;}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #ffffff;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ffffff;
-  color: rgb(14, 192, 177);
-}
-
-.topnav a.active {
-  background-color: #ffffff;
-  color: rgb(153, 150, 150);
-}
-
-.topnav .search-container {
-    float: right;
-    background-color: #ffffff;
-    border-color: black;
-  
-}
-
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
-
-.topnav .search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #e6e0e0fa;
-  border-radius: 8%;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.topnav .search-container button:hover {
-  background: #0bca91;
-}
-
-@media screen and (max-width: 600px){
-  .topnav .search-container {
-    float:none;
-  }
-  .topnav a, .topnav input[type=text], .topnav .search-container button {
-    float:right;
-    display:block;
-    text-align:right;
-    width:auto;
-    margin:auto;
-    padding:px;
-    
-    
-  }
-  .topnav input[type=text] {
-    border: 1px solid #000000;  
-  }}
-            </style>
-         
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="flex justify-between items-center p-4">
+        
+        <img src="https://i.pinimg.com/736x/6b/95/6a/6b956ab87774217ae5f402fb2f633b60.jpg" alt="logo" class="klogo">
+        <nav class="space-x-4">
+            <a href="https://kcyb3r.github.io/Keshu.github.io/" class="text-white hover:text-gray-400">Home</a>
+            <a href="https://kcyb3r.github.io/Keshu.github.io/" class="text-white hover:text-gray-400">Events</a>
+            <a href="https://kcyb3r.github.io/Keshu.github.io/" class="text-white hover:text-gray-400">Tool</a>
+            <a href="https://kcyb3r.github.io/Keshu.github.io/" class="text-white hover:text-gray-400">About</a>
+        </nav>
+    </header>
+    <main class="flex-grow flex flex-col lg:flex-row">
+        <aside class="p-4 lg:w-1/4">
+            <div class="mb-8">
+                <h2 class="text-xl mb-2">Cyber Security</h2>
+                <p class="text-gray-400">Learning...</p>
+                <p class="text-gray-400">Creative Minds</p>
+                <p class="text-gray-400">These website is for education purpose.</p>
+            </div>
+            
+        </aside>
+        <section class="flex-grow p-4 lg:w-3/4">
+            <div class="relative">
+                <img src="https://i.pinimg.com/236x/2d/41/6a/2d416a183b5bbcfec1ae5b71398bea19.jpg" alt="A dark, mysterious face with a mask" class="mask">
+                <div class="absolute top-0 left-0 p-4">
+                    <h1 class="text-4xl font-bold">let's hack <span class="highlight">Today!</span></h1>
+                </div>
+            </div>
+            <!-- <div class="mt-8">
+                <h2 class="text-xl mb-2">News</h2>
+                <p class="text-gray-400">Latest updates and news will be displayed here.</p>
+            </div> -->
+        </section>
+    </main>
+    <footer class="p-4">
+        <div class="flex justify-between">
+            <div>
+                <h2 class="text-xl mb-2">Links</h2>
+                <p class="text-gray-400">Additional links and resources.</p>
+            </div>
+            <div>
+                <h2 class="text-xl mb-2">News</h2>
+                <p class="text-gray-400">Stay updated with the latest news.</p>
+            </div>
+        </div>
+        <br>
+        <div class="icon">
+            <h2 class="text-xl mb-2">Follow me :</h2>
+            <a href="https://t.me/kcyb3/" class="text-yellow-500"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.github.com/kcyb3r/" class="text-yellow-500"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/piyush_talking_118" class="text-yellow-500"><i class="fab fa-instagram"></i></a>
+            <a href="https://chat.whatsapp.com/F83HzgrWjUwG8iwNtNLn64" class="text-yellow-500"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <br>
+        <p class="text-gray-400 text-center">&copy; Kez.ai - 2024. All rights reserved.</p>
+        <p class="text-gray-400 text-center">Working in progress...</p>
+    </footer>
+</body>
 </html>
