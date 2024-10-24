@@ -1,0 +1,241 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   - About_me
+  </title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://i.pinimg.com/736x/6b/95/6a/6b956ab87774217ae5f402fb2f633b60.jpg">
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+             background-color: #0a192f; 
+            color: #ccd6f6;
+            font-family: 'Arial', sans-serif; 
+            font-family:'
+        }
+        .profile-pic {
+            
+            mix-blend-mode: lighten;
+            border-radius: 50%;
+            border: 4px solid rgb(194, 245, 245);
+            
+          
+        }
+        .icon {
+            background-color: #112240;
+            padding: 17px;
+            border-radius: 60px;
+            margin: 0 5px;
+        }
+        .icon:hover {
+            background-color:black;
+             
+        }
+        .skill {
+            background-color:#112240;
+            padding: 12px 30px;
+            border-radius: 20px;
+            margin: 5px;
+        }
+         @keyframes glitch {
+            0% {
+                clip: rect(44px, 9999px, 56px, 0);
+                transform: skew(0.3deg);
+            }
+            5% {
+                clip: rect(85px, 9999px, 140px, 0);
+                transform: skew(0.3deg);
+            }
+            10% {
+                clip: rect(10px, 9999px, 85px, 0);
+                transform: skew(0.3deg);
+            }
+            15% {
+                clip: rect(44px, 9999px, 56px, 0);
+                transform: skew(0.3deg);
+            }
+            20% {
+                clip: rect(85px, 9999px, 140px, 0);
+                transform: skew(0.3deg);
+            }
+            25% {
+                clip: rect(10px, 9999px, 85px, 0);
+                transform: skew(0.3deg);
+            }
+            30% {
+                clip: rect(44px, 9999px, 56px, 0);
+                transform: skew(0.3deg);
+            }
+            35% {
+                clip: rect(85px, 9999px, 140px, 0);
+                transform: skew(0.3deg);
+            }
+            40% {
+                clip: rect(10px, 9999px, 85px, 0);
+                transform: skew(0.3deg);
+            }
+            45% {
+                clip: rect(44px, 9999px, 56px, 0);
+                transform: skew(0.3deg);
+            }
+            50% {
+                clip: rect(85px, 9999px, 140px, 0);
+                transform: skew(0.3deg);
+            }
+            55% {
+                clip: rect(10px, 9999px, 85px, 0);
+                transform: skew(0.3deg);
+            }
+            60% {
+                clip: rect(44px, 9999px, 56px, 0);
+                transform: skew(0.3deg);
+            }
+            65% {
+                clip: rect(85px, 9999px, 140px, 0);
+                transform: skew(0.3deg);
+            }
+            70% {
+                clip: rect(10px, 9999px, 85px, 0);
+                transform: skew(0.3deg);
+            }
+            75% {
+                clip: rect(44px, 9999px, 56px, 0);
+                transform: skew(0.3deg);
+            }
+            80% {
+                clip: rect(85px, 9999px, 140px, 0);
+                transform: skew(0.3deg);
+            }
+            85% {
+                clip: rect(10px, 9999px, 85px, 0);
+                transform: skew(0.3deg);
+            }
+            90% {
+                clip: rect(44px, 9999px, 56px, 0);
+                transform: skew(0.3deg);
+            }
+            95% {
+                clip: rect(85px, 9999px, 140px, 0);
+                transform: skew(0.3deg);
+            }
+            100% {
+                clip: rect(10px, 9999px, 85px, 0);
+                transform: skew(0.3deg);
+            }
+}
+.glitch {
+    position: relative;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    animation: glitch 1s infinite;
+}
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a192f;
+    /* #0a0f24*/
+    
+    overflow: hidden;
+}
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch 2s infinite linear alternate-reverse;
+}
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 blue;
+    clip: rect(85px, 9999px, 140px, 0);
+    animation: glitch 3s infinite linear alternate-reverse;
+  
+}
+.ab_me{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 2%;
+}
+
+.h3{
+    text-align: left;
+    padding-right: 100%;
+}
+
+
+</style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen">
+<div class="text-center">
+    <br>
+<img alt="Profile picture of a person sitting and looking at the mountains" class="profile-pic w-32 h-32 mx-auto" height="100" src="https://i.pinimg.com/736x/6b/95/6a/6b956ab87774217ae5f402fb2f633b60.jpg" width="100"/>
+<h2 class="ab_me">~ About me :</h2>
+<h1 class="text-4xl font-bold mt-4 glitch" data-text="Hacker****">Keshav Pal</h1>
+<h2 class="text-2xl font-bold mt-2 glitch" data-text="~ CEH..">_CEH...</h2>
+
+<p class="mt-4">
+     ~ I completed Certification of Ethical Hacker (CEH) and now , I am exploring some new technology for cyber security.
+</p>
+<h3 class="text-2xl text-blue-400 mt-8">
+    Channels :
+    </h3>
+<div class="flex justify-center mt-6">
+<a class="icon" href="https://github.com/kcyb3r">
+<i class="fab fa-github text-white"> GitHub 
+</i>
+</a>
+
+</a>
+<a class="icon" href="https://chat.whatsapp.com/F83HzgrWjUwG8iwNtNLn64">
+<i class="fab fa-whatsapp text-white"> WhatsApp 
+</i>
+</a>
+<a class="icon" href="https://t.me/kcyb3/">
+<i class="fab fa-telegram text-white"> Telegram 
+</i>
+</a>
+</div>
+<br>
+<div class="flex justify-center fa-map-markert-6">
+<a class="icon" href="https://www.instagram.com/piyush_talking_118">
+    <i class="fab fa-instagram text-white"> Instagram
+    </i>
+    </a>
+</div>
+<h3 class="text-2xl text-blue-400 mt-8">
+Basic skills :
+</h3>
+<div class="flex flex-wrap justify-center mt-4">
+<div class="skill"><i class="fab fa-">
+CEHv12</i>
+</div>
+<div class="skill"><i class="fab fa-html5">
+html</i>
+</div>
+<div class="skill">
+#CSS
+</div>
+
+<div class="skill"><i class="fab fa-python">
+Python</i>
+</div>
+<div class="skill"><i class="fab fa-linux">
+Kali linux </i>
+</div>
+<div class="skill"><i class="fab fa-ubuntu">
+Ubuntu </i></div>
+</div>
+<footer class="mt-12 text-center text-sm">
+© 2024 Kez.ai. <br><strong>~ All rights reserved .</strong>
+</footer>
+</body>
+</html>
