@@ -1,0 +1,848 @@
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kez.ai</title>
+    <link rel="shortcut icon" class="favon" href="https://i.pinimg.com/736x/6b/95/6a/6b956ab87774217ae5f402fb2f633b60.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        @media only screen and (max-width:600px){}
+        @media only screen and (min-width: 600px){}
+        @media only screen and (min-width : 768px){}
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .favon{
+            border-radius: 30px;
+            
+        }
+        .logo {
+            font-family: 'Pacifico', cursive;
+        }
+        .highlight {
+            color: #f5c518;
+        }
+
+        .klogo{
+            border-radius: 100%;
+            width: 90px;
+            
+            mix-blend-mode: lighten;
+            border-left: 50%;
+            
+        }
+        .mask{
+            mix-blend-mode: lighten;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .fa-github{
+            font-size:45px;
+            width: 55px;
+        }
+        .fa-telegram{
+            font-size:45px;
+            width: 55px;
+        }
+        .fa-instagram{
+            font-size:45px;
+            width: 55px;
+        }
+        .fa-whatsapp{
+            font-size:45px;
+            width: 55px;
+        }
+    
+            
+
+        
+    </style>
+    <style>
+        /* Glass box effect */
+        .glass-box {
+            background: rgba(17, 17, 17, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.2s ease;
+        }
+
+        /* Update search results styles */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(245, 197, 24, 0.2);
+            border-radius: 8px;
+            margin-top: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-result-item {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .search-result-item:hover {
+            background: rgba(245, 197, 24, 0.1);
+        }
+
+        .tool-category {
+            color: #f5c518;
+            font-size: 0.8em;
+            margin: 4px 0;
+        }
+
+        /* Scrollbar styles for search results */
+        .search-results::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .search-results::-webkit-scrollbar-track {
+            background: rgba(17, 17, 17, 0.95);
+        }
+
+        .search-results::-webkit-scrollbar-thumb {
+            background: #f5c518;
+            border-radius: 4px;
+        }
+
+        #searchContainer {
+            z-index: 1000;
+            transition: all 0.2s ease-out;
+        }
+
+        #searchContainer.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .glass-box {
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+    <style>
+        .installation-steps {
+            display: none;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-family: monospace;
+            position: relative;
+            transition: all 0.2s ease-out;
+        }
+
+        .installation-steps.active {
+            display: block;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            background: rgba(245, 197, 24, 0.2);
+            border: 1px solid #f5c518;
+            border-radius: 4px;
+            color: #f5c518;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(245, 197, 24, 0.3);
+        }
+
+        .copy-btn.copied {
+            background: #f5c518;
+            color: black;
+        }
+
+        .steps-text {
+            margin-top: 1rem;
+            white-space: pre-wrap;
+            color: #ccc;
+        }
+    </style>
+    <style>
+        /* Faster animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            animation: fadeInUp 0.3s cubic-bezier(0.2, 0, 0.1, 1) forwards;
+            will-change: transform, opacity;
+        }
+
+        .glass-box {
+            opacity: 0;
+            animation: fadeInUp 0.3s cubic-bezier(0.2, 0, 0.1, 1) forwards;
+            animation-delay: calc(var(--order) * 0.05s);
+            will-change: transform, opacity;
+            contain: content;
+        }
+
+        /* Faster transitions */
+        .glass-box, .search-result-item, .copy-btn, .installation-steps {
+            transition: all 0.15s ease-out;
+        }
+
+        /* Optimize performance */
+        * {
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+    <style>
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .scroll-container {
+            overflow: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        /* Add smooth transition for all animations */
+        * {
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+    <script>
+        // Preload critical resources
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove scroll animations if user prefers reduced motion
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.documentElement.style.scrollBehavior = 'auto';
+            }
+        });
+    </script>
+    <style>
+        /* Default (mobile) styles */
+        .klogo {
+            border-radius: 100%;
+            width: 90px;
+            mix-blend-mode: lighten;
+        }
+
+        /* Large screens (1024px and above) */
+        @media screen and (min-width: 1024px) {
+            .klogo {
+                width: 120px; /* Larger logo for big screens */
+            }
+
+            nav.space-x-4 {
+                font-size: 1.2rem; /* Larger nav text */
+                gap: 2rem; /* More space between nav items */
+            }
+
+            nav.space-x-4 a {
+                padding: 0.5rem 1rem; /* Larger clickable area */
+            }
+
+            header {
+                padding: 1.5rem 2rem; /* More padding in header */
+            }
+        }
+
+        /* Extra large screens (1440px and above) */
+        @media screen and (min-width: 1440px) {
+            .klogo {
+                width: 150px; /* Even larger logo for extra large screens */
+            }
+
+            nav.space-x-4 {
+                font-size: 1.3rem;
+                gap: 2.5rem;
+            }
+        }
+    </style>
+    <style>
+        /* Add these styles for navigation effects */
+        nav.space-x-4 a {
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        nav.space-x-4 a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f5c518;
+            transition: width 0.3s ease;
+        }
+
+        nav.space-x-4 a:hover::after {
+            width: 100%;
+        }
+
+        /* Active state for current page */
+        nav.space-x-4 a.active {
+            color: #f5c518;
+        }
+
+        nav.space-x-4 a.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="flex justify-between items-center p-4">
+        
+        <img src="https://i.pinimg.com/736x/6b/95/6a/6b956ab87774217ae5f402fb2f633b60.jpg" alt="logo" class="klogo">
+        <nav class="space-x-4">
+            <a href="https://kcyb3r.github.io/Keshu.github.io/" class="text-white hover:text-gray-400">Home</a>
+            <a href="https://kcyb3r.github.io/Keshu.github.io/" class="text-white hover:text-gray-400">Events</a>
+            <a href="https://kcyb3r.github.io/Keshu.github.io/" class="text-white hover:text-gray-400 active">Tool</a>
+            <a href="/About.html" class="text-white hover:text-gray-400">About</a>
+        </nav>
+    </header>
+
+    <!-- Replace the existing search section with this -->
+    <div class="w-full max-w-2xl mx-auto p-4">
+        <div class="relative flex justify-end">
+            <!-- Search Icon Button -->
+            <button id="searchToggle" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300 text-2xl p-2">
+                <i class="fas fa-search"></i>
+            </button>
+            
+            <!-- Hidden Search Container -->
+            <div id="searchContainer" class="absolute top-full right-0 mt-2 w-full max-w-md transform scale-0 opacity-0 transition-all duration-300 origin-top-right">
+                <div class="relative">
+                    <input type="text" 
+                           id="searchInput"
+                           placeholder="Search for tools..." 
+                           class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg 
+                                  text-white placeholder-gray-400 focus:outline-none focus:border-[#f5c518]
+                                  transition-all duration-300 backdrop-blur-sm glass-box"
+                    >
+                    <div id="searchResults" class="search-results" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this after the header section -->
+    <main class="flex-grow container mx-auto px-4 py-8 scroll-container">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Box 1 -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 0">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-mobile-alt text-[#f5c518] text-4xl mb-4"></i>
+                    <h2 class="text-xl font-bold mb-3 text-white">Scrcpy</h2>
+                    <p class="text-gray-300 text-center">
+                        Display and control your Android device .
+                    </p>
+                    <button onclick="toggleInstructions('pentest')" class="mt-4 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        Installation Guide
+                    </button>
+                    <div id="pentest-steps" class="installation-steps">
+                        <button class="copy-btn" onclick="copyInstructions('pentest-text')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <div id="pentest-text" class="steps-text">
+sudo apt update
+sudo apt install metasploit-framework
+msfconsole
+
+# Additional tools:
+sudo apt install nmap
+sudo apt install sqlmap
+sudo apt install hydra</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 2 -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 1">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-bug text-[#f5c518] text-4xl mb-4"></i>
+                    <h2 class="text-xl font-bold mb-3 text-white">SARA</h2>
+                    <p class="text-gray-300 text-center">
+                        SARA - Simple Android Ransomware Attack .
+                    </p>
+                    <button onclick="toggleInstructions('network')" class="mt-4 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        Installation Guide
+                    </button>
+                    <div id="network-steps" class="installation-steps">
+                        <button class="copy-btn" onclick="copyInstructions('network-text')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <div id="network-text" class="steps-text">
+sudo apt update -y
+git clone https://github.com/termuxhackers-id/SARA 
+cd SARA 
+sudo bash install.sh 
+python3 sara.py</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 3 -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 2">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-eye text-[#f5c518] text-4xl mb-4"></i>
+                    <h2 class="text-xl font-bold mb-3 text-white">Seeker</h2>
+                    <p class="text-gray-300 text-center">
+                        Accurately Locate Smartphones using Social Engineering.
+                    </p>
+                    <button onclick="toggleInstructions('websec')" class="mt-4 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        Installation Guide
+                    </button>
+                    <div id="websec-steps" class="installation-steps">
+                        <button class="copy-btn" onclick="copyInstructions('websec-text')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <div id="websec-text" class="steps-text">
+git clone https://github.com/thewhiteh4t/seeker.git
+cd seeker
+chmod +x install.sh
+./install.sh</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Box 4-->
+        
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 3">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-bomb text-[#f5c518] text-4xl mb-4"></i>
+                    <h2 class="text-xl font-bold mb-3 text-white">TBomb</h2>
+                    <p class="text-gray-300 text-center">
+                        This is a SMS And Call Bomber For Linux And Termux.
+                    </p>
+                    <button onclick="toggleInstructions('webse')" class="mt-4 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        Installation Guide
+                    </button>
+                    <div id="webse-steps" class="installation-steps">
+                        <button class="copy-btn" onclick="copyInstructions('webse-text')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <div id="webse-text" class="steps-text">
+git clone https://github.com/thewhiteh4t/seeker.git
+cd seeker
+chmod +x install.sh
+./install.sh</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 5 - Zphisher -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 4">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-fish text-[#f5c518] text-4xl mb-4"></i>
+                    <h2 class="text-xl font-bold mb-3 text-white">Zphisher</h2>
+                    <p class="text-gray-300 text-center">
+                        Automated phishing tool with 30+ templates.
+                    </p>
+                    <button onclick="toggleInstructions('zphisher')" class="mt-4 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        Installation Guide
+                    </button>
+                    <div id="zphisher-steps" class="installation-steps">
+                        <button class="copy-btn" onclick="copyInstructions('zphisher-text')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <div id="zphisher-text" class="steps-text">
+git clone https://github.com/htr-tech/zphisher
+cd zphisher
+bash zphisher.sh</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 6 - PhoneInfoga -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 5">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-phone text-[#f5c518] text-4xl mb-4"></i>
+                    <h2 class="text-xl font-bold mb-3 text-white">PhoneInfoga</h2>
+                    <p class="text-gray-300 text-center">
+                        Advanced phone number OSINT tool.
+                    </p>
+                    <button onclick="toggleInstructions('phoneinfoga')" class="mt-4 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        Installation Guide
+                    </button>
+                    <div id="phoneinfoga-steps" class="installation-steps">
+                        <button class="copy-btn" onclick="copyInstructions('phoneinfoga-text')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <div id="phoneinfoga-text" class="steps-text">
+git clone https://github.com/sundowndev/phoneinfoga
+cd phoneinfoga
+go install
+phoneinfoga serve -p 8080</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 7 - Sherlock -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 6">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-search text-[#f5c518] text-4xl mb-4"></i>
+                    <h2 class="text-xl font-bold mb-3 text-white">Sherlock</h2>
+                    <p class="text-gray-300 text-center">
+                        Hunt down social media accounts by username.
+                    </p>
+                    <button onclick="toggleInstructions('sherlock')" class="mt-4 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        Installation Guide
+                    </button>
+                    <div id="sherlock-steps" class="installation-steps">
+                        <button class="copy-btn" onclick="copyInstructions('sherlock-text')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <div id="sherlock-text" class="steps-text">
+git clone https://github.com/sherlock-project/sherlock.git
+cd sherlock
+python3 -m pip install -r requirements.txt
+python3 sherlock username</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 8 - WiFi-Pumpkin -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 7">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-wifi text-[#f5c518] text-4xl mb-4"></i>
+                    <h2 class="text-xl font-bold mb-3 text-white">WiFi-Pumpkin</h2>
+                    <p class="text-gray-300 text-center">
+                        Framework for rogue WiFi access point attack.
+                    </p>
+                    <button onclick="toggleInstructions('wifipumpkin')" class="mt-4 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        Installation Guide
+                    </button>
+                    <div id="wifipumpkin-steps" class="installation-steps">
+                        <button class="copy-btn" onclick="copyInstructions('wifipumpkin-text')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <div id="wifipumpkin-text" class="steps-text">
+git clone https://github.com/P0cL4bs/WiFi-Pumpkin.git
+cd WiFi-Pumpkin
+sudo pip install -r requirements.txt
+sudo python setup.py install</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add this script before closing body tag -->
+    <script>
+        // Expanded tool database
+        const tools = [
+            { name: 'Nmap', category: 'Network Security', description: 'Network scanning and security auditing tool', link: '#nmap' },
+            { name: 'Wireshark', category: 'Network Analysis', description: 'Network protocol analyzer for troubleshooting', link: '#wireshark' },
+            { name: 'Metasploit', category: 'Penetration Testing', description: 'Advanced penetration testing framework', link: '#metasploit' },
+            { name: 'Burp Suite', category: 'Web Security', description: 'Web vulnerability scanner and proxy tool', link: '#burp' },
+            { name: 'John the Ripper', category: 'Password Cracking', description: 'Advanced password cracker and auditing tool', link: '#john' },
+            { name: 'Aircrack-ng', category: 'Wireless Security', description: 'Complete suite for wireless network security', link: '#aircrack' },
+            { name: 'SQLmap', category: 'Web Security', description: 'Automated SQL injection tool', link: '#sqlmap' },
+            { name: 'Hydra', category: 'Password Cracking', description: 'Network login cracker', link: '#hydra' },
+            { name: 'Nikto', category: 'Web Security', description: 'Web server scanner', link: '#nikto' },
+            { name: 'Scrcpy', category: 'Android', description: 'Display and control your Android device', link: 'https://github.com/Genymobile/scrcpy'},
+            { name: 'SARA', category: 'Android', description: 'SARA - Simple Android Ransomware Attack', link: 'https://github.com/termuxhackers-id/SARA'},
+            { name: 'Seeker', category: 'Phishing', description: 'Accurately Locate Smartphones Using Social Engineering', link: 'https://github.com/thewhiteh4t/seeker'},
+            { name: 'Hashcat', category: 'Password Cracking', description: 'Advanced password recovery tool', link: 'https://hashcat.net/hashcat/' },
+            { name: 'Maltego', category: 'Information Gathering', description: 'Open source intelligence and forensics tool', link: 'https://www.maltego.com/' },
+            { name: 'Autopsy', category: 'Digital Forensics', description: 'Digital forensics platform and GUI', link: 'https://www.autopsy.com/' },
+            { name: 'BeEF', category: 'Web Security', description: 'Browser Exploitation Framework for penetration testing', link: 'https://beefproject.com/' },
+            { name: 'Kismet', category: 'Wireless Security', description: 'Wireless network detector and sniffer', link: 'https://www.kismetwireless.net/' },
+            { name: 'Ettercap', category: 'Network Security', description: 'Comprehensive suite for MITM attacks', link: 'https://www.ettercap-project.org/' },
+            { name: 'Wpscan', category: 'Web Security', description: 'WordPress vulnerability scanner', link: 'https://wpscan.org/' },
+            { name: 'Dirb', category: 'Web Security', description: 'Web content scanner', link: 'http://dirb.sourceforge.net/' },
+            { name: 'Netcat', category: 'Network Security', description: 'Networking utility for reading/writing network connections', link: '#netcat' },
+            { name: 'Gobuster', category: 'Web Security', description: 'Directory/File & DNS busting tool', link: 'https://github.com/OJ/gobuster' },
+            { name: 'Sherlock', category: 'OSINT', description: 'Hunt down social media accounts by username', link: 'https://github.com/sherlock-project/sherlock' },
+            { name: 'Ghidra', category: 'Reverse Engineering', description: 'Software reverse engineering framework', link: 'https://ghidra-sre.org/' },
+            { name: 'Subfinder', category: 'Information Gathering', description: 'Subdomain discovery tool', link: 'https://github.com/projectdiscovery/subfinder' },
+            { name: 'Nuclei', category: 'Vulnerability Scanner', description: 'Fast vulnerability scanner', link: 'https://github.com/projectdiscovery/nuclei' },
+            { name: 'Amass', category: 'Information Gathering', description: 'Network mapping of attack surfaces', link: 'https://github.com/OWASP/Amass' },
+            { name: 'Airgeddon', category: 'Wireless Security', description: 'Multi-use bash script for Linux systems to audit wireless networks', link: 'https://github.com/v1s1t0r1sh3r3/airgeddon' },
+            { name: 'Armitage', category: 'Exploitation', description: 'Graphical cyber attack management tool for Metasploit', link: 'http://www.fastandeasyhacking.com/' },
+            { name: 'Binwalk', category: 'Forensics', description: 'Firmware analysis tool', link: 'https://github.com/ReFirmLabs/binwalk' },
+            { name: 'Crunch', category: 'Password Attacks', description: 'Wordlist generator', link: '#crunch' },
+            { name: 'Dnsenum', category: 'Information Gathering', description: 'DNS enumeration tool', link: 'https://github.com/fwaeytens/dnsenum' },
+            { name: 'Empire', category: 'Post Exploitation', description: 'PowerShell and Python post-exploitation agent', link: 'https://github.com/BC-SECURITY/Empire' },
+            { name: 'Fern Wifi Cracker', category: 'Wireless Attacks', description: 'Wireless security auditing and attack software', link: '#fern' },
+            { name: 'Foremost', category: 'Forensics', description: 'File recovery tool', link: '#foremost' },
+            { name: 'Hashid', category: 'Cryptography', description: 'Hash identifier tool', link: 'https://github.com/psypanda/hashID' },
+            { name: 'Hexinject', category: 'Sniffing & Spoofing', description: 'Versatile packet injector and sniffer', link: '#hexinject' },
+            { name: 'Httrack', category: 'Web Applications', description: 'Website copier and offline browser', link: 'https://www.httrack.com/' },
+            { name: 'Johnny', category: 'Password Attacks', description: 'GUI for John the Ripper', link: '#johnny' },
+            { name: 'King Phisher', category: 'Social Engineering', description: 'Phishing campaign toolkit', link: 'https://github.com/securestate/king-phisher' },
+            { name: 'Legion', category: 'Information Gathering', description: 'Next-generation security scanner', link: 'https://github.com/GoVanguard/legion' },
+            { name: 'Lynis', category: 'Vulnerability Analysis', description: 'Security auditing tool', link: 'https://cisofy.com/lynis/' },
+            { name: 'Macchanger', category: 'Sniffing & Spoofing', description: 'MAC address changer', link: '#macchanger' },
+            { name: 'Masscan', category: 'Information Gathering', description: 'Fast port scanner', link: 'https://github.com/robertdavidgraham/masscan' },
+            { name: 'Netdiscover', category: 'Information Gathering', description: 'Active/passive ARP reconnaissance tool', link: '#netdiscover' },
+            { name: 'OpenVAS', category: 'Vulnerability Analysis', description: 'Open Vulnerability Assessment System', link: 'https://www.openvas.org/' },
+            { name: 'Pixiewps', category: 'Wireless Attacks', description: 'WPS bruteforce tool', link: 'https://github.com/wiire-a/pixiewps' },
+            { name: 'Proxychains', category: 'Maintaining Access', description: 'Proxy chains tool', link: '#proxychains' },
+            { name: 'Recon-ng', category: 'Information Gathering', description: 'Web Reconnaissance framework', link: 'https://github.com/lanmaster53/recon-ng' },
+            { name: 'SET', category: 'Social Engineering', description: 'Social Engineering Toolkit', link: 'https://github.com/trustedsec/social-engineer-toolkit' },
+            { name: 'Skipfish', category: 'Web Applications', description: 'Web application security scanner', link: '#skipfish' },
+            { name: 'SSLscan', category: 'Information Gathering', description: 'SSL/TLS scanner', link: 'https://github.com/rbsec/sslscan' },
+            { name: 'THC-Hydra', category: 'Password Attacks', description: 'Network logon cracker', link: 'https://github.com/vanhauser-thc/thc-hydra' },
+            { name: 'Volatility', category: 'Forensics', description: 'Memory forensics framework', link: 'https://www.volatilityfoundation.org/' },
+            { name: 'Wifite', category: 'Wireless Attacks', description: 'Automated wireless attack tool', link: 'https://github.com/derv82/wifite2' },
+            { name: 'Yersinia', category: 'Exploitation', description: 'Network protocol attack tool', link: '#yersinia' },
+            { name: 'Zaproxy', category: 'Web Applications', description: 'Web app scanner and intercepting proxy', link: 'https://www.zaproxy.org/' },
+            { name: 'Dmitry', category: 'Information Gathering', description: 'Deepmagic Information Gathering Tool', link: '#dmitry' },
+            { name: 'Fierce', category: 'Information Gathering', description: 'DNS reconnaissance tool', link: 'https://github.com/mschwager/fierce' },
+            { name: 'Medusa', category: 'Password Attacks', description: 'Parallel network login auditor', link: '#medusa' },
+            { name: 'Responder', category: 'Exploitation', description: 'LLMNR, NBT-NS and MDNS poisoner', link: 'https://github.com/SpiderLabs/Responder' },
+            { name: 'Websploit', category: 'Exploitation', description: 'Web exploitation framework', link: '#websploit' },
+            { name: 'Zphisher', category: 'Phishing', description: 'Automated phishing tool with 30+ templates', link: 'https://github.com/htr-tech/zphisher' },
+            { name: 'PhoneInfoga', category: 'Information Gathering', description: 'Advanced phone number OSINT tool', link: 'https://github.com/sundowndev/phoneinfoga' },
+            { name: 'Routersploit', category: 'Exploitation', description: 'Framework for exploiting embedded devices', link: 'https://github.com/threat9/routersploit' },
+            { name: 'Social Engineer Toolkit', category: 'Social Engineering', description: 'Open-source penetration testing framework', link: 'https://github.com/trustedsec/social-engineer-toolkit' },
+            { name: 'Photon', category: 'Information Gathering', description: 'Fast web crawler and recon tool', link: 'https://github.com/s0md3v/Photon' },
+            { name: 'XSStrike', category: 'Web Security', description: 'Advanced XSS detection suite', link: 'https://github.com/s0md3v/XSStrike' },
+            { name: 'Fsociety', category: 'Penetration Testing', description: 'Penetration testing framework', link: 'https://github.com/Manisso/fsociety' },
+            { name: 'TheFatRat', category: 'Exploitation', description: 'Backdoor creator and payload generator', link: 'https://github.com/Screetsec/TheFatRat' },
+            { name: 'Cutter', category: 'Reverse Engineering', description: 'Free and open source RE platform', link: 'https://github.com/rizinorg/cutter' },
+            { name: 'Osmedeus', category: 'Reconnaissance', description: 'Workflow engine for offensive security', link: 'https://github.com/j3ssie/osmedeus' },
+            { name: 'Raccoon', category: 'Reconnaissance', description: 'High performance offensive security tool', link: 'https://github.com/evyatarmeged/Raccoon' },
+            { name: 'Xerosploit', category: 'Network Attacks', description: 'Efficient and advanced MitM framework', link: 'https://github.com/LionSec/xerosploit' },
+            { name: 'WiFi-Pumpkin', category: 'Wireless Attacks', description: 'Framework for rogue WiFi access point attack', link: 'https://github.com/P0cL4bs/WiFi-Pumpkin' },
+            { name: 'Commix', category: 'Web Security', description: 'Automated command injection exploitation tool', link: 'https://github.com/commixproject/commix' },
+            { name: 'Trape', category: 'OSINT', description: 'People tracker on the internet', link: 'https://github.com/jofpin/trape' },
+            { name: 'CrackMapExec', category: 'Network Security', description: 'Swiss army knife for networks', link: 'https://github.com/byt3bl33d3r/CrackMapExec' },
+            { name: 'Sn1per', category: 'Automation', description: 'Automated pentest recon scanner', link: 'https://github.com/1N3/Sn1per' },
+            { name: 'Weevely', category: 'Web Security', description: 'Weaponized web shell', link: 'https://github.com/epinna/weevely3' },
+            { name: 'Reconspider', category: 'Information Gathering', description: 'Advanced OSINT framework', link: 'https://github.com/bhavsec/reconspider' },
+            { name: 'Operative Framework', category: 'OSINT', description: 'Digital investigation framework', link: 'https://github.com/graniet/operative-framework' },
+            { name: 'Lockphish', category: 'Phishing', description: 'Access lock phishing tool', link: 'https://github.com/JasonJerry/lockphish' },
+            { name: 'Infoga', category: 'Information Gathering', description: 'Email OSINT tool', link: 'https://github.com/m4ll0k/Infoga' },
+            { name: 'RED_HAWK', category: 'Web Security', description: 'All in one tool for Information Gathering', link: 'https://github.com/Tuhinshubhra/RED_HAWK' },
+            { name: 'Striker', category: 'Web Security', description: 'Offensive information and vulnerability scanner', link: 'https://github.com/s0md3v/Striker' },
+            { name: 'Doork', category: 'Web Security', description: 'Passive vulnerability auditor', link: 'https://github.com/AeonDave/doork' }
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        function searchTools() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            // Filter out empty tool entries
+            const validTools = tools.filter(tool => tool.name && tool.category);
+
+            // Improved search with relevance scoring
+            const searchResults = validTools.map(tool => {
+                let score = 0;
+                const name = tool.name.toLowerCase();
+                const category = tool.category.toLowerCase();
+                const description = tool.description.toLowerCase();
+
+                // Exact matches get highest score
+                if (name === searchTerm) score += 100;
+                if (category === searchTerm) score += 50;
+                
+                // Starting with search term gets high score
+                if (name.startsWith(searchTerm)) score += 75;
+                if (category.startsWith(searchTerm)) score += 35;
+                
+                // Contains search term gets lower score
+                if (name.includes(searchTerm)) score += 50;
+                if (category.includes(searchTerm)) score += 25;
+                if (description.includes(searchTerm)) score += 15;
+
+                // Check for partial word matches
+                const words = searchTerm.split(' ');
+                words.forEach(word => {
+                    if (name.includes(word)) score += 20;
+                    if (category.includes(word)) score += 10;
+                    if (description.includes(word)) score += 5;
+                });
+
+                return {
+                    tool,
+                    score
+                };
+            }).filter(result => result.score > 0)
+              .sort((a, b) => b.score - a.score);
+
+            displayResults(searchResults);
+        }
+
+        function displayResults(results) {
+            if (results.length === 0) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            searchResults.innerHTML = results.map(result => `
+                <div class="search-result-item" onclick="window.location.href='${result.tool.link}'">
+                    <div class="font-bold text-white">${result.tool.name}</div>
+                    <div class="tool-category">${result.tool.category}</div>
+                    <div class="text-gray-400 text-sm">${result.tool.description}</div>
+                </div>
+            `).join('');
+            
+            searchResults.style.display = 'block';
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', searchTools);
+        searchInput.addEventListener('focus', searchTools);
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Search on enter key
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchTools();
+            }
+        });
+
+        // Add these to your existing script
+        const searchToggle = document.getElementById('searchToggle');
+        const searchContainer = document.getElementById('searchContainer');
+
+        searchToggle.addEventListener('click', () => {
+            searchContainer.classList.toggle('active');
+            if (searchContainer.classList.contains('active')) {
+                searchInput.focus();
+            }
+        });
+
+        // Close search when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchContainer.contains(e.target) && !searchToggle.contains(e.target)) {
+                searchContainer.classList.remove('active');
+                searchResults.style.display = 'none';
+            }
+        });
+
+        function toggleInstructions(id) {
+            const steps = document.getElementById(`${id}-steps`);
+            steps.classList.toggle('active');
+        }
+
+        function copyInstructions(id) {
+            const text = document.getElementById(id).innerText;
+            const btn = document.querySelector(`[onclick="copyInstructions('${id}')"]`);
+            
+            // Use the newer clipboard API with fallback
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(btn);
+                }).catch(() => {
+                    fallbackCopyTextToClipboard(text, btn);
+                });
+            } else {
+                fallbackCopyTextToClipboard(text, btn);
+            }
+        }
+
+        // Fallback for older browsers
+        function fallbackCopyTextToClipboard(text, btn) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                document.execCommand('copy');
+                showCopySuccess(btn);
+            } catch (err) {
+                console.error('Failed to copy text:', err);
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        // Show success feedback
+        function showCopySuccess(btn) {
+            btn.classList.add('copied');
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            
+            setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+            }, 2000);
+        }
+
+        // More efficient observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '50px',
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-reveal');
+                    observer.unobserve(entry.target); // Stop observing once revealed
+                }
+            });
+        }, observerOptions);
+
+        // Batch DOM operations
+        requestAnimationFrame(() => {
+            const boxes = document.querySelectorAll('.glass-box');
+            boxes.forEach((box, index) => {
+                box.style.setProperty('--order', index);
+                observer.observe(box);
+            });
+        });
+
+        // Get current page URL
+        const currentPage = window.location.pathname;
+        
+        // Add active class to current page link
+        document.querySelectorAll('nav.space-x-4 a').forEach(link => {
+            if (link.getAttribute('href').includes(currentPage)) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
