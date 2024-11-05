@@ -10,11 +10,14 @@
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
+    @media only screen and (max-width:600px){}
+    @media only screen and (min-width: 600px){}
+    @media only screen and (min-width : 768px){}
    body {
-             background-color: #0a192f; 
-            color: #ccd6f6;
+            background-color: #0d0d0d;
+            color: #ffffff;
             font-family: 'Arial', sans-serif; 
-            font-family:'
+            
         }
         .profile-pic {
             
@@ -25,22 +28,39 @@
           
         }
         .icon {
-            background-color: #112240;
+            background-color: #000000;
             padding: 17px;
             border-radius: 60px;
             margin: 0 5px;
+            transition: all 0.3s ease;
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
         }
         .icon:hover {
-            background-color:black;
-             
+            background-color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            border-color: #00ffff;
         }
         .skill {
-            background-color:#112240;
+            background-color: #000000;
             padding: 12px 30px;
             border-radius: 20px;
             margin: 5px;
+            transition: all 0.3s ease;
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            animation: fadeIn 0.5s ease-out forwards;
+            animation-delay: calc(var(--order) * 0.1s);
+            opacity: 0;
         }
-         @keyframes glitch {
+        .skill:hover {
+            background-color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            border-color: #00ffff;
+        }
+        @keyframes glitch {
             0% {
                 clip: rect(44px, 9999px, 56px, 0);
                 transform: skew(0.3deg);
@@ -140,20 +160,18 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #0a192f;
-    /* #0a0f24*/
-    
+    background: #0d0d0d;
     overflow: hidden;
 }
 .glitch::before {
     left: 2px;
-    text-shadow: -2px 0 red;
+    text-shadow: -2px 0 #f5c518;
     clip: rect(44px, 450px, 56px, 0);
     animation: glitch 2s infinite linear alternate-reverse;
 }
 .glitch::after {
     left: -2px;
-    text-shadow: -2px 0 blue;
+    text-shadow: -2px 0 #64ffda;
     clip: rect(85px, 9999px, 140px, 0);
     animation: glitch 3s infinite linear alternate-reverse;
   
@@ -170,7 +188,130 @@
     padding-right: 100%;
 }
 
+/* Add new animation keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Apply animations to elements */
+.profile-pic {
+    animation: float 3s ease-in-out infinite;
+    /* keep existing profile-pic styles */
+}
+
+.skill {
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: calc(var(--order) * 0.1s);
+    opacity: 0;
+    /* keep existing skill styles */
+}
+
+.icon {
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: calc(var(--order) * 0.1s);
+    opacity: 0;
+    /* keep existing icon styles */
+}
+
+.icon:hover {
+    animation: pulse 1s ease-in-out infinite;
+    /* keep existing hover styles */
+}
+
+h1, h2, h3 {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+p {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Add animation order to skills */
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.skill {
+    background-color:black;
+    padding: 12px 30px;
+    border-radius: 20px;
+    margin: 5px;
+    transition: all 0.4s ease-out;
+    transition-delay: calc(var(--order) * 0.1s);
+}
+
+/* Add scroll animation keyframes */
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+}
+
+.scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add these styles for the falling stars effect */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) translateX(0);
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(100px);
+        opacity: 0;
+    }
+}
 </style>
 </head>
 
@@ -183,7 +324,7 @@
 <h2 class="text-2xl font-bold mt-2 glitch" data-text="~ CEH..">_CEH...</h2>
 
 <p class="mt-4">
-     ~ I completed Certification of Ethical Hacker (CEH) and now , I am exploring some new technique for cyber security.
+     ~ I completed Certification of Ethical Hacker (CEH) and now , I am exploring some new techniques for cyber security.
 </p>
 <h3 class="text-2xl text-blue-400 mt-8">
     Channels :
@@ -237,5 +378,71 @@ Ubuntu </i></div>
 <footer class="mt-12 text-center text-sm">
 © 2024 Kez.ai. <br><strong>~ All rights reserved .</strong>
 </footer>
+
+<!-- Add this right after your body tag opens -->
+<div class="stars" id="stars"></div>
+
+<!-- Add this script before closing body tag -->
+<script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    // Add scroll-animate class and observer to elements
+    document.querySelectorAll('h1, h2, h3, p, .skill, .icon').forEach((el, index) => {
+        el.classList.add('scroll-animate');
+        el.style.setProperty('--order', index);
+        observer.observe(el);
+    });
+
+    // Smooth scroll for all links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    function createStars() {
+        const stars = document.getElementById('stars');
+        const count = 50; // Number of stars
+
+        for (let i = 0; i < count; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            // Random position and animation duration
+            const left = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = 3 + Math.random() * 7;
+            
+            star.style.left = left + 'vw';
+            star.style.animationDelay = delay + 's';
+            star.style.animationDuration = duration + 's';
+            
+            // Random star size
+            const size = Math.random() * 3;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            
+            // Add glow effect
+            star.style.boxShadow = `0 0 ${size * 2}px rgba(255, 255, 255, 0.8)`;
+            
+            stars.appendChild(star);
+        }
+    }
+
+    // Create stars when page loads
+    document.addEventListener('DOMContentLoaded', createStars);
+</script>
 </body>
 </html>
