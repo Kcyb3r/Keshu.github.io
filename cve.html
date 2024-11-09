@@ -1,0 +1,1475 @@
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kez.ai</title>
+    <link rel="shortcut icon" class="favon" href="https://i.pinimg.com/736x/6b/95/6a/6b956ab87774217ae5f402fb2f633b60.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" as="style">
+    <style>
+        @media only screen and (max-width:600px){}
+        @media only screen and (min-width: 600px){}
+        @media only screen and (min-width : 768px){}
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .favon{
+            border-radius: 30px;
+            
+        }
+        .logo {
+            font-family: 'Pacifico', cursive;
+        }
+        .highlight {
+            color: #f5c518;
+        }
+
+        .klogo{
+            border-radius: 100%;
+            width: 90px;
+            
+            mix-blend-mode: lighten;
+            border-left: 50%;
+            
+        }
+       
+    
+        /* Add these styles for navigation effects */
+        nav.space-x-4 a {
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        nav.space-x-4 a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f5c518;
+            transition: width 0.3s ease;
+        }
+
+        nav.space-x-4 a:hover::after {
+            width: 100%;
+        }
+
+        /* Active state for current page */
+        nav.space-x-4 a.active {
+            color: #f5c518;
+        }
+
+        nav.space-x-4 a.active::after {
+            width: 100%;
+        }
+       
+
+        
+    </style>
+
+    <!-- Add these optimizations to the head section -->
+    <style>
+        /* Remove all animations and transitions for ultra-fast performance */
+        * {
+            animation: none !important;
+            transition: none !important;
+            transform: none !important;
+            animation-duration: 0s !important;
+            animation-delay: 0s !important;
+            transition-duration: 0s !important;
+            transition-delay: 0s !important;
+        }
+
+        /* Remove hover animations */
+        .glass-box {
+            transform: none !important;
+            transition: none !important;
+        }
+
+        .glass-box:hover {
+            transform: none !important;
+            transition: none !important;
+        }
+
+        /* Remove scroll animations */
+        html {
+            scroll-behavior: auto !important;
+        }
+
+        /* Remove fade effects */
+        .scroll-reveal {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        /* Remove glass effect for better performance */
+        .glass-box {
+            background: rgb(17, 17, 17) !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        /* Instant button responses */
+        button {
+            transition: none !important;
+        }
+
+        /* Remove all transform effects */
+        .transform {
+            transform: none !important;
+        }
+
+        /* Remove hover scale effect */
+        .hover\:scale-105:hover {
+            transform: none !important;
+        }
+    </style>
+
+    <!-- Replace the existing reload script with this minimal version -->
+    <script>
+        window.onpageshow = e => e.persisted && location.reload();
+    </script>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="flex justify-between items-center p-4">
+        
+        <img src="https://i.pinimg.com/736x/6b/95/6a/6b956ab87774217ae5f402fb2f633b60.jpg" alt="logo" class="klogo">
+        <nav class="space-x-4">
+            <a href="/home.html" class="text-white hover:text-gray-400">Home</a>
+            <a href="/cve.html" class="text-white hover:text-gray-400 active">CVE's</a>
+            <a href="/tool.html" class="text-white hover:text-gray-400">Tool's</a>
+            <a href="/About.html" class="text-white hover:text-gray-400">About</a>
+        </nav>
+    </header>
+
+    <!-- Add this section after the header and before the search container -->
+    <div class="w-full max-w-2xl mx-auto p-4">
+        <h3 class="text-2xl font-bold text-light-gray-400">☠️Common Vulnerabilities and Exposures...</h3>
+        <hr class="my-4 border-t border-gray-600">
+        <h6 class="text-2xl font-bold text-gray-400">🔓CVE LIST :</h6>
+    </div>
+
+    <!-- Then keep the search container -->
+    <div class="w-full max-w-2xl mx-auto p-4">
+        <div class="relative flex justify-end items-center">
+            <!-- Search Icon Button -->
+            <button id="searchToggle" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300 text-2xl p-2 z-50">
+                <i class="fas fa-search"></i>
+            </button>
+            
+            <!-- Hidden Search Container - Reduced width -->
+            <div id="searchContainer" class="absolute top-0 right-12 w-64 transform scale-0 opacity-0 transition-all duration-300 origin-right">
+                <div class="relative">
+                    <input type="text" 
+                           id="searchInput"
+                           placeholder="Search CVE's..." 
+                           class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg 
+                                  text-white placeholder-gray-400 focus:outline-none focus:border-[#f5c518]
+                                  transition-all duration-300">
+                    <div id="searchResults" class="search-results" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add search results styling -->
+    <style>
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(245, 197, 24, 0.2);
+            border-radius: 8px;
+            margin-top: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .search-result-item {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .search-result-item:hover {
+            background: rgba(245, 197, 24, 0.1);
+        }
+
+        .search-result-item a {
+            text-decoration: none;
+            padding: 12px;
+            display: block;
+            color: inherit;
+        }
+
+        .search-result-item:hover {
+            background: rgba(245, 197, 24, 0.05);
+        }
+
+        .search-result-item .fa-external-link-alt {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .search-result-item:hover .fa-external-link-alt {
+            opacity: 1;
+        }
+    </style>
+
+    <!-- Add this after your heading section -->
+    <main class="flex-grow container mx-auto px-4 py-8 scroll-container">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- CVE Box Example -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 0">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21626" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-2 text-white">CVE-2024-21626</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 mb-3">
+                        Windows
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Microsoft Windows Kernel Elevation of Privilege Vulnerability
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 7.8 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-21626')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-21626-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            An elevation of privilege vulnerability exists in Windows Kernel when it fails to properly handle objects in memory.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Windows 10<br>
+                            - Windows 11<br>
+                            - Windows Server 2019<br>
+                            - Windows Server 2022
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add the glass box styles if not already present -->
+            <style>
+                .glass-box {
+                    background: rgba(17, 17, 17, 0.4);
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+                    transition: all 0.2s ease;
+                }
+
+                .installation-steps {
+                    display: none;
+                    background: rgba(0, 0, 0, 0.5);
+                    padding: 1rem;
+                    border-radius: 0.5rem;
+                    margin-top: 1rem;
+                    font-family: monospace;
+                    position: relative;
+                    transition: all 0.2s ease-out;
+                }
+
+                .installation-steps.active {
+                    display: block;
+                }
+            </style>
+
+            <!-- Add the toggle script if not already present -->
+            <script>
+                function toggleInstructions(id) {
+                    const steps = document.getElementById(`${id}-steps`);
+                    steps.classList.toggle('active');
+                }
+            </script>
+
+            <!-- Add these boxes inside the grid div after your existing CVE box -->
+
+            <!-- CVE-2024-0001 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 1">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-0001" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-0001</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-green-500/20 text-green-400 mb-3">
+                        Linux
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Linux kernel vulnerability in the network stack
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 8.8 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-0001')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-0001-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A vulnerability in the Linux kernel network stack could allow an attacker to cause a denial of service or potentially execute arbitrary code.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Linux Kernel < 6.1.2<br>
+                            - Various Linux distributions<br>
+                            - Embedded Linux devices
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-23897 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 2">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-23897" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-23897</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 mb-3">
+                        Server
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Jenkins Security Bypass Vulnerability
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.8 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-23897')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-23897-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A critical vulnerability in Jenkins allows attackers to bypass security measures and potentially execute arbitrary code.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Jenkins LTS <= 2.426.2<br>
+                            - Jenkins Weekly <= 2.440<br>
+                            - Multiple Jenkins plugins
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-21716 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 3">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21716" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-21716</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 mb-3">
+                        Browser
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Microsoft Edge Remote Code Execution
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 8.3 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-21716')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-21716-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A remote code execution vulnerability exists in Microsoft Edge (Chromium-based) when the browser improperly handles objects in memory.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Microsoft Edge (Chromium-based)<br>
+                            - All versions before 121.0.2277.98
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-0519 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 4">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-0519" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-0519</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 mb-3">
+                        Web Service
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Apache OpenMeetings Authentication Bypass
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.1 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-0519')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-0519-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            Authentication bypass vulnerability in Apache OpenMeetings allows attackers to gain unauthorized access.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Apache OpenMeetings < 7.2.0<br>
+                            - All previous versions affected
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-21899 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 5">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21899" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-21899</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 mb-3">
+                        Server
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Microsoft SharePoint Server Remote Code Execution
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.8 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-21899')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-21899-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A remote code execution vulnerability in Microsoft SharePoint Server that could allow attackers to execute arbitrary code with elevated privileges.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - SharePoint Server 2019<br>
+                            - SharePoint Server Subscription Edition<br>
+                            - SharePoint Enterprise Server 2016
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-0847 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 6">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-0847" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-0847</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-red-500/20 text-red-400 mb-3">
+                        Network
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Linux Kernel OverlayFS Privilege Escalation
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 7.8 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-0847')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-0847-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A local privilege escalation vulnerability in the Linux kernel's OverlayFS implementation allows local attackers to gain root privileges.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Linux Kernel through 6.6.21<br>
+                            - Various Linux distributions using affected kernels
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-21413 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 7">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21413" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-21413</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 mb-3">
+                        Server
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Microsoft Outlook Remote Code Execution
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.8 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-21413')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-21413-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A critical remote code execution vulnerability in Microsoft Outlook that could allow attackers to execute code with the privileges of the current user.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Microsoft Outlook 2016, 2019<br>
+                            - Microsoft 365 Apps for Enterprise<br>
+                            - Microsoft Outlook for Android and iOS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-22024 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 8">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-22024" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-22024</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-red-500/20 text-red-400 mb-3">
+                        Network
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Cisco IOS XE Software Web UI Authentication Bypass
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 10.0 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-22024')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-22024-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A critical authentication bypass vulnerability in Cisco IOS XE Software web UI could allow an unauthenticated attacker to gain administrative access.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Cisco IOS XE Software versions 17.x.x<br>
+                            - Multiple Cisco router and switch models
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-21887 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 9">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21887" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-21887</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 mb-3">
+                        Server
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Microsoft Windows SmartScreen Security Feature Bypass
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 8.8 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-21887')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-21887-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A security feature bypass vulnerability in Windows SmartScreen that could lead to malware execution without warning.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Windows 10, 11<br>
+                            - Windows Server 2019, 2022
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-20674 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 10">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-20674" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-20674</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 mb-3">
+                        Server
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        VMware Workstation and Fusion Privilege Escalation
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 7.8 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-20674')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-20674-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A local privilege escalation vulnerability in VMware Workstation and Fusion that could allow attackers to elevate privileges.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - VMware Workstation 17.x<br>
+                            - VMware Fusion 13.x
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-21733 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 11">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-21733" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-21733</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 mb-3">
+                        Server
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Microsoft Exchange Server Remote Code Execution
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.0 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-21733')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-21733-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A remote code execution vulnerability in Microsoft Exchange Server that could allow attackers to execute arbitrary code.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Exchange Server 2019<br>
+                            - Exchange Server 2016
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add these Android CVE boxes to your existing grid -->
+
+            <!-- CVE-2024-0031 Android Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 12">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-0031" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fab fa-android text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-0031</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 mb-3">
+                        Android
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Android System Remote Code Execution
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.8 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-0031')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-0031-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A critical vulnerability in Android System component that could lead to remote code execution with no additional privileges needed.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Android 12<br>
+                            - Android 13<br>
+                            - Android 14
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-0028 Android Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 13">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-0028" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fab fa-android text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-0028</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 mb-3">
+                        Android
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Android Framework Privilege Escalation
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 7.8 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-0028')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-0028-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A privilege escalation vulnerability in Android Framework that could lead to local escalation of privileges with no additional execution privileges needed.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Android 13<br>
+                            - Android 14<br>
+                            - Various Android OEM devices
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2024-0025 Android Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 14">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-0025" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fab fa-android text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2024-0025</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 mb-3">
+                        Android
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Android Bluetooth Information Disclosure
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 8.2 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2024-0025')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2024-0025-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            An information disclosure vulnerability in the Bluetooth component that could lead to remote information disclosure with no additional execution privileges needed.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Android 12<br>
+                            - Android 13<br>
+                            - Android 14<br>
+                            - Pixel Devices
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add these 2021 CVE boxes to your existing grid -->
+
+            <!-- CVE-2021-44228 (Log4Shell) Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 15">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-44228</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 mb-3">
+                        Web Service
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Log4j Remote Code Execution (Log4Shell)
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 10.0 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-44228')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-44228-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            The infamous Log4Shell vulnerability in Apache Log4j allowing unauthenticated remote code execution through JNDI injection.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Apache Log4j2 2.0-beta9 through 2.14.1<br>
+                            - Countless Java applications and services<br>
+                            - Enterprise software systems
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2021-40444 Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 16">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-40444" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-40444</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 mb-3">
+                        Windows
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Microsoft MSHTML Remote Code Execution
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 8.8 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-40444')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-40444-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A remote code execution vulnerability in MSHTML that could be exploited through malicious Office documents.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Windows 10<br>
+                            - Windows Server 2019<br>
+                            - Microsoft Office 2019/365
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2021-26855 (ProxyLogon) Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 17">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-26855" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-bug text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-26855</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 mb-3">
+                        Server
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Microsoft Exchange Server ProxyLogon
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.8 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-26855')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-26855-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            Part of the ProxyLogon exploit chain allowing unauthenticated attackers to execute arbitrary code on Microsoft Exchange servers.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Exchange Server 2013<br>
+                            - Exchange Server 2016<br>
+                            - Exchange Server 2019
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2021-34527 (PrintNightmare) Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 18">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-34527" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-print text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-34527</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 mb-3">
+                        Windows
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Windows Print Spooler Remote Code Execution (PrintNightmare)
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 8.8 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-34527')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-34527-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A remote code execution vulnerability in Windows Print Spooler service known as PrintNightmare.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Windows 7, 8.1, 10<br>
+                            - Windows Server 2008, 2012, 2016, 2019<br>
+                            - All Windows versions
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2021-30116 (Kaseya) Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 19">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-30116" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-server text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-30116</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 mb-3">
+                        Server
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Kaseya VSA Remote Code Execution
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.8 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-30116')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-30116-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A critical vulnerability in Kaseya VSA that was exploited in a massive ransomware attack.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Kaseya VSA 9.5.7<br>
+                            - Earlier versions<br>
+                            - Cloud and on-premises deployments
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2021-41773 (Apache Path Traversal) Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 20">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-41773" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-folder-open text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-41773</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 mb-3">
+                        Web Service
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Apache HTTP Server Path Traversal
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 7.5 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-41773')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-41773-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A path traversal vulnerability in Apache HTTP Server allowing attackers to map URLs to files outside the document root.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Apache HTTP Server 2.4.49<br>
+                            - Apache HTTP Server 2.4.50
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2021-22005 (VMware vCenter) Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 21">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-22005" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-cloud text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-22005</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-400 mb-3">
+                        Virtualization
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        VMware vCenter Server File Upload RCE
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.8 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-22005')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-22005-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A critical file upload vulnerability in VMware vCenter Server that allows remote attackers to execute arbitrary code.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - VMware vCenter Server 6.7<br>
+                            - VMware vCenter Server 7.0<br>
+                            - VMware Cloud Foundation
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2021-3156 (Sudo Baron Samedit) Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 22">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-3156" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-terminal text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-3156</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-green-500/20 text-green-400 mb-3">
+                        Linux
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Sudo Heap-Based Buffer Overflow (Baron Samedit)
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 7.8 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-3156')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-3156-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A heap-based buffer overflow in Sudo allowing local users to gain root privileges.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Sudo versions prior to 1.9.5p2<br>
+                            - Most Linux/Unix distributions<br>
+                            - Legacy systems
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2021-21972 (VMware vSphere) Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 23">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-21972" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fas fa-cloud text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-21972</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-400 mb-3">
+                        Virtualization
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        VMware vSphere Client RCE
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.8 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-21972')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-21972-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A remote code execution vulnerability in the vSphere Client allowing attackers to execute commands with unrestricted privileges.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - VMware vCenter Server 6.5<br>
+                            - VMware vCenter Server 6.7<br>
+                            - VMware vCenter Server 7.0
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add these Android CVE boxes from 2021 -->
+
+            <!-- CVE-2021-0316 Android Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 24">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-0316" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fab fa-android text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-0316</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 mb-3">
+                        Android
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Android System Privilege Escalation
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 7.8 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-0316')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-0316-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A critical vulnerability in Android System allowing local privilege escalation with no user interaction required.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Android 10<br>
+                            - Android 11<br>
+                            - Multiple OEM devices
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2021-0430 Android Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 25">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-0430" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fab fa-android text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-0430</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 mb-3">
+                        Android
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Android Media Framework Remote Code Execution
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 9.8 CRITICAL
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-0430')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-0430-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A critical vulnerability in Android Media Framework allowing remote code execution through malicious media files.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Android 9<br>
+                            - Android 10<br>
+                            - Android 11<br>
+                            - Various OEM devices
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVE-2021-0687 Android Box -->
+            <div class="glass-box glow-effect rounded-lg p-6 transform hover:scale-105 transition-all duration-300" style="--order: 26">
+                <div class="flex flex-col items-center">
+                    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-0687" target="_blank" class="text-[#f5c518] hover:text-yellow-400 transition-colors duration-300">
+                        <i class="fab fa-android text-4xl mb-4"></i>
+                    </a>
+                    <h2 class="text-xl font-bold mb-3 text-white">CVE-2021-0687</h2>
+                    <span class="text-sm font-medium px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 mb-3">
+                        Android
+                    </span>
+                    <p class="text-gray-300 text-center mb-2">
+                        Android Bluetooth Stack Information Disclosure
+                    </p>
+                    <div class="text-sm text-gray-400 mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> CVSS Score: 8.2 HIGH
+                    </div>
+                    <button onclick="toggleInstructions('cve-2021-0687')" class="mt-2 px-6 py-2 bg-transparent border border-[#f5c518] text-[#f5c518] rounded hover:bg-[#f5c518] hover:text-black transition-colors duration-300">
+                        View Details
+                    </button>
+                    <div id="cve-2021-0687-steps" class="installation-steps">
+                        <div class="steps-text text-gray-300">
+                            <strong>Description:</strong><br>
+                            A vulnerability in Android Bluetooth stack allowing unauthorized access to sensitive information.<br><br>
+                            <strong>Affected Products:</strong><br>
+                            - Android 10<br>
+                            - Android 11<br>
+                            - Pixel devices<br>
+                            - Samsung devices
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add copyright footer -->
+    <footer class="text-center py-4 mt-auto">
+        <p class="text-gray-400 text-sm">
+            © 2024 Kez.ai.<br> All rights reserved.<br>
+            WORKING IN PROGRESS....
+        </p>
+    </footer>
+
+    <!-- Add this script for CVE search functionality -->
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
+        // Define CVE database
+        const cveDatabase = [
+            // 2024 CVEs
+            {
+                id: 'CVE-2024-21626',
+                title: 'Microsoft Windows Kernel Elevation of Privilege Vulnerability',
+                score: '7.8',
+                severity: 'HIGH'
+            },
+            {
+                id: 'CVE-2024-0001',
+                title: 'Linux kernel vulnerability in the network stack',
+                score: '8.8',
+                severity: 'HIGH'
+            },
+            // ... (keep existing 2024 entries)
+
+            // 2021 CVEs
+            {
+                id: 'CVE-2021-44228',
+                title: 'Log4j Remote Code Execution (Log4Shell)',
+                score: '10.0',
+                severity: 'CRITICAL'
+            },
+            {
+                id: 'CVE-2021-40444',
+                title: 'Microsoft MSHTML Remote Code Execution',
+                score: '8.8',
+                severity: 'HIGH'
+            },
+            {
+                id: 'CVE-2021-26855',
+                title: 'Microsoft Exchange Server ProxyLogon',
+                score: '9.8',
+                severity: 'CRITICAL'
+            },
+            {
+                id: 'CVE-2021-34527',
+                title: 'Windows Print Spooler Remote Code Execution (PrintNightmare)',
+                score: '8.8',
+                severity: 'HIGH'
+            },
+            {
+                id: 'CVE-2021-30116',
+                title: 'Kaseya VSA Remote Code Execution',
+                score: '9.8',
+                severity: 'CRITICAL'
+            },
+            {
+                id: 'CVE-2021-41773',
+                title: 'Apache HTTP Server Path Traversal',
+                score: '7.5',
+                severity: 'HIGH'
+            },
+            {
+                id: 'CVE-2021-22005',
+                title: 'VMware vCenter Server File Upload RCE',
+                score: '9.8',
+                severity: 'CRITICAL'
+            },
+            {
+                id: 'CVE-2021-3156',
+                title: 'Sudo Heap-Based Buffer Overflow (Baron Samedit)',
+                score: '7.8',
+                severity: 'HIGH'
+            },
+            {
+                id: 'CVE-2021-21972',
+                title: 'VMware vSphere Client RCE',
+                score: '9.8',
+                severity: 'CRITICAL'
+            },
+
+            // Android CVEs
+            {
+                id: 'CVE-2021-0316',
+                title: 'Android System Privilege Escalation',
+                score: '7.8',
+                severity: 'HIGH'
+            },
+            {
+                id: 'CVE-2021-0430',
+                title: 'Android Media Framework Remote Code Execution',
+                score: '9.8',
+                severity: 'CRITICAL'
+            },
+            {
+                id: 'CVE-2021-0687',
+                title: 'Android Bluetooth Stack Information Disclosure',
+                score: '8.2',
+                severity: 'HIGH'
+            },
+            {
+                id: 'CVE-2024-0031',
+                title: 'Android System Remote Code Execution',
+                score: '9.8',
+                severity: 'CRITICAL'
+            },
+            {
+                id: 'CVE-2024-0028',
+                title: 'Android Framework Privilege Escalation',
+                score: '7.8',
+                severity: 'HIGH'
+            },
+            {
+                id: 'CVE-2024-0025',
+                title: 'Android Bluetooth Information Disclosure',
+                score: '8.2',
+                severity: 'HIGH'
+            }
+        ];
+
+        // Search function
+        function searchCVEs() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const results = cveDatabase.filter(cve => 
+                cve.id.toLowerCase().includes(searchTerm) ||
+                cve.title.toLowerCase().includes(searchTerm) ||
+                cve.severity.toLowerCase().includes(searchTerm) ||
+                cve.score.includes(searchTerm)
+            );
+
+            displayResults(results);
+        }
+
+        // Display results function with added links
+        function displayResults(results) {
+            if (results.length === 0) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            searchResults.innerHTML = results.map(cve => `
+                <div class="search-result-item">
+                    <a href="https://nvd.nist.gov/vuln/detail/${cve.id}" target="_blank" 
+                       class="block hover:bg-[#f5c518]/10 transition-colors duration-200">
+                        <div class="font-bold text-white flex items-center justify-between">
+                            ${cve.id}
+                            <i class="fas fa-external-link-alt text-sm text-[#f5c518]"></i>
+                        </div>
+                        <div class="text-[#f5c518]">${cve.severity} (${cve.score})</div>
+                        <div class="text-gray-400 text-sm">${cve.title}</div>
+                    </a>
+                </div>
+            `).join('');
+            
+            searchResults.style.display = 'block';
+        }
+
+        // Scroll to CVE function
+        function scrollToCVE(cveId) {
+            const element = document.querySelector(`h2:contains('${cveId}')`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                searchResults.style.display = 'none';
+                searchInput.value = '';
+            }
+        }
+
+        // Add this function to reset search
+        function resetSearch() {
+            searchInput.value = '';
+            searchResults.style.display = 'none';
+        }
+
+        // Update event listeners
+        searchInput.addEventListener('input', searchCVEs);
+        searchInput.addEventListener('focus', searchCVEs);
+
+        // Update click outside handler
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                resetSearch();
+            }
+        });
+
+        // Add blur event listener
+        searchInput.addEventListener('blur', (e) => {
+            // Small delay to allow for result clicks
+            setTimeout(() => {
+                if (!searchResults.contains(document.activeElement)) {
+                    resetSearch();
+                }
+            }, 200);
+        });
+
+        // Add escape key handler
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                resetSearch();
+            }
+        });
+
+        // Reset search when page loses focus
+        window.addEventListener('blur', () => {
+            resetSearch();
+        });
+    </script>
+
+    <!-- Add this script for search toggle functionality -->
+    <script>
+        const searchToggle = document.getElementById('searchToggle');
+        const searchContainer = document.getElementById('searchContainer');
+
+        searchToggle.addEventListener('click', () => {
+            searchContainer.classList.toggle('active');
+            if (searchContainer.classList.contains('active')) {
+                searchInput.focus();
+            }
+        });
+
+        // Close search when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchContainer.contains(e.target) && !searchToggle.contains(e.target)) {
+                searchContainer.classList.remove('active');
+                resetSearch();
+            }
+        });
+    </script>
+
+    <!-- Add these styles -->
+    <style>
+        #searchContainer {
+            z-index: 30;
+        }
+
+        #searchContainer.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Adjust search results position */
+        .search-results {
+            margin-top: 0.5rem;
+        }
+    </style>
+
+    <!-- Update the scroll button HTML -->
+    <button id="scrollToTop" class="fixed bottom-5 right-5 bg-[#f5c518] text-black w-12 h-12 rounded-full shadow-lg opacity-0 transition-opacity duration-300 hover:bg-yellow-400 flex items-center justify-center">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <!-- Update the scroll button styles -->
+    <style>
+        #scrollToTop {
+            z-index: 1000;
+            display: none;
+            /* Added circular shape styles */
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #scrollToTop.visible {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Hover effect */
+        #scrollToTop:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 197, 24, 0.3);
+        }
+
+        /* Responsive positions */
+        @media (max-width: 640px) {
+            #scrollToTop {
+                bottom: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            #scrollToTop {
+                bottom: 2rem;
+                right: 2rem;
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            #scrollToTop {
+                bottom: 3rem;
+                right: 3rem;
+                width: 48px;
+                height: 48px;
+            }
+        }
+    </style>
+
+    <!-- Add this script -->
+    <script>
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Instant scroll to top
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>
+
+    
